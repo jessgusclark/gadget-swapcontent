@@ -11,7 +11,7 @@ $(document).ready(function () {
 		token = gadget.get('token');
 		site = gadget.get('site');
 
-		console.log("Swap Gadget Ready", apihost, token, site);
+		console.log("Swap Gadget Ready!");
 
 		//swap.init(apihost, token, site);
 		
@@ -33,7 +33,7 @@ $(document).ready(function () {
     			path : path
     		},
     		success : function (data) {
-    			parsePageXML(data.source);
+    			parsePage(data.source);
     		},
     		error : function (data) {
     			console.log("Failed to get content", data, site);
@@ -43,12 +43,10 @@ $(document).ready(function () {
 
 	// OU Pages aren't 100% XML and may fail when parsed, so the code below
 	// uses regex. This also assumes that the editable regions are defined 
-	// as <ouc:div.
-	function parsePageXML(source){
-		
-		
+	// as <ouc:div></ouc:div>.
+	function parsePage(source){
 
-		console.log("parsing data:");
+		//console.log("parsing data:");
 
 		var str = source, re = re = /<ouc:div/g, match;
 		while (match = re.exec(str)) {
@@ -67,18 +65,18 @@ $(document).ready(function () {
 		    //console.log(oucdiv_start, close_tag);
 		    //console.log(source.substring(oucdiv_start, close_tag));
 
-		    // create object:
-		    var tempDiv = new oucdiv.create( source.substring(oucdiv_start, close_tag) );
-
-		    console.log( tempDiv );
-
-		    tagArray.push(tempDiv);
+		    // create object and push it to array:
+		    tagArray.push(
+		    	new oucdiv.create( source.substring(oucdiv_start, close_tag) )
+		    );
 		}
 
-		console.log("Total Editable Regions: ", tagArray.length);
+		//console.log("Total Editable Regions: ", tagArray.length);
 		addRegionsToDropDowns();
 	}
 
+	// global variable tagArray is looped through and the labels are
+	// added to the source and destination dropdowns:
 	function addRegionsToDropDowns(){
 		for (i = 0; i < tagArray.length; i++) { 
     		$('#source').append( new Option( tagArray[i].label , i ) );
@@ -99,15 +97,6 @@ $(document).ready(function () {
         	this.label = getLabelNameFromSource(s);
 
         }
-        //variables:
-        /*
-        name: function(){
-        	return this._name;
-        },
-        
-        source: function(){
-        	return this.source;
-        }*/
     }
 
     // Extract the label tag:
