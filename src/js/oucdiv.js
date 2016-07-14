@@ -1,16 +1,7 @@
+module.exports.oucdiv = (function (s) {
 
-(function () {
-
-	var source;
-	var label;
-
-	var oucdiv = {
-        create: function (s) {
-        	this.source = s;
-        	this.label = getLabelNameFromSource(s);
-
-        }
-    }
+	var _source;
+	var _label;
 
     // Extract the label tag:
     // <ouc:div label="content-row-4-2" group="Everyone" button-text="Content Region">
@@ -22,8 +13,19 @@
     	return s.substring(start, end + start);
     }
 
-
+    return {
+        init: function(s){
+            _source = s;
+            _label = getLabelNameFromSource(s);
+        },
+        source: function(){
+            return _source;
+        },
+        label: function(){
+            return _label;
+        }
+    }
 	// make the object available:
-    window.oucdiv = oucdiv;
+    //window.oucdiv = oucdiv;
 
-})();
+});
