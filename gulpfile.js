@@ -13,8 +13,8 @@ gulp.task('build', ['sass', 'scripts', 'watch']);
 // watchers:
 gulp.task('watch', function() {
 
-  gulp.watch('source/scss/*.scss', ['sass']);  
-  gulp.watch('source/js/*.js', ['scripts']);
+  gulp.watch('src/scss/*.scss', ['sass']);  
+  gulp.watch('src/js/*.js', ['scripts']);
 
 });
 
