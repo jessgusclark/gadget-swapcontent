@@ -1,0 +1,22 @@
+{
+  "name": "gadget-swapcontent",
+  "description": "Swap content from one editable region to another.",
+  "main": "index.js",
+  "authors": [
+    "Jesse Clark <jesse.clark@unco.edu>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "oucampus",
+    "omniupdate"
+  ],
+  "homepage": "https://github.com/jessgusclark/gadget-swapcontent",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
