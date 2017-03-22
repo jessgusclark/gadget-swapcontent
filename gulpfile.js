@@ -12,7 +12,7 @@ var concat = require('gulp-concat');
 
 //default task:
 gulp.task('default', ['sass', 'scripts']);
-gulp.task('build', ['sass', 'scripts', 'watch']);
+gulp.task('build', ['sass', 'scripts', 'test', 'watch']);
 
 // watchers:
 gulp.task('watch', function() {
@@ -33,7 +33,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src(['./src/gadgetlib.js', './src/js/*.js' ])
+  return gulp.src([/*'./src/gadgetlib.js',*/ './src/js/*.js' ])
     .pipe(concat('gadget.js'))
     .pipe(gulp.dest('./dist/js/'))
     .pipe(uglify())

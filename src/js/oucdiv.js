@@ -26,6 +26,6 @@ module.exports.oucdiv = (function (s) {
         }
     }
 	// make the object available:
-    //window.oucdiv = oucdiv;
+    window.oucdiv = oucdiv;
 
 });
