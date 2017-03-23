@@ -33,7 +33,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src([/*'./src/gadgetlib.js',*/ './src/js/*.js' ])
+  return gulp.src(['./src/gadgetlib.js', './src/js/*.js' ])
     .pipe(concat('gadget.js'))
     .pipe(gulp.dest('./dist/js/'))
     .pipe(uglify())
